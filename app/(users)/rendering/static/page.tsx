@@ -6,10 +6,17 @@ type AcademyGrade = RowDataPacket & {
   gradeName: string;
 };
 
+export const dynamic = "force-dynamic";
+
 const Static = async () => {
-  const [academy_grades] = await db.execute<AcademyGrade[]>(
-    "SELECT gradeId, gradeName FROM academy_grades"
-  );
+  let academy_grades: AcademyGrade[] = [];
+  try {
+    [academy_grades] = await db.execute<AcademyGrade[]>(
+      "SELECT gradeId, gradeName FROM academy_grades"
+    );
+  } catch (error) {
+    console.error("DB query failed:", error);
+  }
 
   console.log("Static:", academy_grades);
 

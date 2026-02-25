@@ -1,11 +1,6 @@
 "use client";
 
-import { Component, useState } from "react";
-import Navigation from './components/ui/navigation';
-import { DialogDemo } from "@/app/components/ui/dialog";
-import { DrawerDemo } from "@/app/components/ui/drawer";
-import { CarouselDemo } from "@/app/components/ui/carousel";
-import { SheetDemo } from "@/app/components/ui/sheet";
+import {  useState } from "react";
 import AddEmp from "@/app/components/ui/addEmp";
 
 

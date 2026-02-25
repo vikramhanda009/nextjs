@@ -6,10 +6,17 @@ interface AcademyGrade extends RowDataPacket {
   gradeName: string
 }
 
+export const dynamic = "force-dynamic"
+
 const SingleName = async () => {
-  const [academy_grades] = await db.query<AcademyGrade[]>(
-    "SELECT * FROM academy_grades"
-  )
+  let academy_grades: AcademyGrade[] = [];
+  try {
+    [academy_grades] = await db.query<AcademyGrade[]>(
+      "SELECT * FROM academy_grades"
+    );
+  } catch (error) {
+    console.error("DB query failed:", error);
+  }
 
   return (
     <ul>
@@ -17,7 +24,7 @@ const SingleName = async () => {
         <li key={grade.gradeId}>{grade.gradeName}</li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
 export default SingleName

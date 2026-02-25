@@ -3,7 +3,12 @@ import { HospitalForm } from "./HospitalForm";
 // import { createHospitalAction } from "./hospital.action";
 
 const HospitalPage = async () => {
-  const [hospitalsData] = await db.execute(`select * from hospitals`);
+  let hospitalsData = [];
+  try {
+    [hospitalsData] = await db.execute(`select * from hospitals`);
+  } catch (error) {
+    console.error("DB query failed:", error);
+  }
   //   console.log(hospitalsData);
 
   return (

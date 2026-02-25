@@ -8,9 +8,14 @@ type AcademyGrade = RowDataPacket & {
 };
 
 const getAlldata = cache(async () => {
-  const [academy_grades] = await db.query<AcademyGrade[]>(
-    "SELECT gradeId, gradeName FROM academy_grades"
-  );
+  let academy_grades: AcademyGrade[] = [];
+  try {
+    [academy_grades] = await db.query<AcademyGrade[]>(
+      "SELECT gradeId, gradeName FROM academy_grades"
+    );
+  } catch (error) {
+    console.error("DB query failed:", error);
+  }
 
   return academy_grades;
 });

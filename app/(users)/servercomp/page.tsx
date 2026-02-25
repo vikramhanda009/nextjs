@@ -7,8 +7,13 @@ type Post = {
 }
 
 const ServerComp = async () => {
-  const res = await fetch(url)
-  const data: Post[] = await res.json()
+  let data: Post[] = [];
+  try {
+    const res = await fetch(url);
+    data = await res.json();
+  } catch (error) {
+    console.error("Fetch failed:", error);
+  }
 
   return (
     <div className="space-y-6">
@@ -18,7 +23,7 @@ const ServerComp = async () => {
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default ServerComp
