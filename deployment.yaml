@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nextjs-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nextjs
@@ -20,4 +20,6 @@ spec:
             - containerPort: 3000
           env:
             - name: NODE_ENV
-              value: "development"
+              value: "production"
+            - name: NEXT_PUBLIC_API_URL
+              value: "http://nestjs-api-service:3001"
