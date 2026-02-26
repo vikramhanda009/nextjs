@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: nextjs
-          image: nextjs-app
-          imagePullPolicy: Never
+          image: vikramhanda007/nextjs-app:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           env:
