@@ -19,4 +19,4 @@ jobs:
       run: docker build -t vikramhanda007/nextjs-app .
 
     - name: Push Image
-      run: docker push vikramhanda007/nextjs-app
+      run: docker push  
